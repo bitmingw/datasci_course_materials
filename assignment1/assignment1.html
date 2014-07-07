@@ -202,11 +202,11 @@ print scores.items() # Print every (term, score) pair in the dictionary
 
 <p>Don't feel obligated to use it, but the following paper may be helpful for developing a sentiment metric.  Look at the Opinion Estimation subsection of the Text Analysis section in particular.</p>
 
-<p><a href="http://www.cs.cmu.edu/~rbalasub/publications/oconnor_balasubramanyan_routledge_smith.icwsm2010.tweets_to_polls.pdf">O'Connor, B., Balasubramanyan, R., Routedge, B., &amp; Smith, N. From Tweets to Polls: Linking Text Sentiment to Public Opinion Time Series. (ICWSM), May 2010.</a></p>
+<p><a href="http://www.cs.cmu.edu/~nasmith/papers/oconnor+balasubramanyan+routledge+smith.icwsm10.pdf">O'Connor, B., Balasubramanyan, R., Routedge, B., &amp; Smith, N. From Tweets to Polls: Linking Text Sentiment to Public Opinion Time Series. (ICWSM), May 2010.</a></p>
 
-<p>You are provided with a skeleton file, term_sentiment.py, which can be executed using the following command:
+<p>You are provided with a skeleton file <code>term_sentiment.py</code> which accepts the same two arguments as tweet_sentiment.py and can be executed using the following command:
 
-<pre>$ python term_sentiment.py &lt;sentiment_file&gt; &lt;tweet_file&gt;</pre>
+<pre>$ python term_sentiment.py AFINN-111.txt output.txt</pre>
 
 </p>
 
@@ -270,9 +270,10 @@ as a string.</p>
 
 <p>There are different ways you might assign a location to a tweet.  Here are three:
 <ul>
-<li>Use the <code>coordinates</code> field, if it exists, to geocode the tweet.  This method gives the most reliable location information, but unfortunately not very many tweets contain this field and you have to figure out some way of translating the coordinates into a state</li>
 
-<li>Use the <code>place</code> field.  This field is hand-entered by the twitter user and may not always be present, and will not typically contain a state. It might contain a city, though, which you could use to determine the state.</li>
+<li>Use the <code>coordinates</code> field (a part of the <code>place</code> object, if it exists, to geocode the tweet.  This method gives the most reliable location information, but unfortunately this field is not always available and you must figure out some way of translating the coordinates into a state.</li>
+
+<li>Use the other metadata in the <code>place</code> field.  Much of this information is hand-entered by the twitter user and may not always be present or reliable, and may not typically contain a state name.</li>
 
 <li>Use the <code>user</code> field to determine the twitter user's home city and state.  This location does not necessarily correspond to the location where the tweet was posted, but it's reasonable to use it as a proxy.</li>
 </ul>
