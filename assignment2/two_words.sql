@@ -1,6 +1,12 @@
 SELECT count(*) FROM (
-    SELECT DISTINCT docid
+    SELECT docid as result1
     FROM frequency
-    GROUP BY docid
-    HAVING term = "transactions" AND term = "world"
-) x;
+    WHERE term = "transactions"
+)
+INNER JOIN
+(
+    SELECT docid as result2
+    FROM frequency
+    WHERE term = "world"
+)
+ON result1 = result2;
