@@ -1,8 +1,6 @@
-SELECT value FROM (
-    SELECT A.row_num, B.col_num, SUM(A.value * B.value) AS value
-    FROM a AS A
-    JOIN b AS B
-    ON A.col_num = B.row_num
-    GROUP BY A.row_num, B.col_num
+SELECT results FROM (
+    SELECT a.row_num, b.col_num, SUM(a.value * b.value) AS results
+    FROM a JOIN b ON a.col_num = b.row_num
+    GROUP BY a.row_num, b.col_num
 )
-WHERE A.row_num = 2 AND B.col_num = 3;
+WHERE a.row_num = 3 AND b.col_num = 4;
