@@ -30,10 +30,9 @@ def reducer(key, list_of_values):
     # i.e. (personA, personB) and (personB, personA)
     # if A is NOT B's friend
     direction = sum(list_of_values)
-    if direction == 1:
+    if direction != 0:
         mr.emit(key)
-    elif direction == -1:
-        mr.emit((key[1], key[0]))
+        
 
 # Do not modify below this line
 # =============================
